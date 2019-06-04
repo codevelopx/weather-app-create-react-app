@@ -3,11 +3,6 @@
   "name": "Five Days Weather Forecast App",
   "icons": [
     {
-      "src": "weatherS.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
       "src": "weatherB.png",
       "sizes": "512x512",
       "type": "image/png"
