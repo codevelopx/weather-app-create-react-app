@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom"
 
 ReactDOM.render(
 
-    <BrowserRouter basename='/weather-app-create-react-app'>
+    <BrowserRouter basename='/weather-app-create-react-app/'>
         <App />
     </BrowserRouter >,
     document.getElementById('root'));
