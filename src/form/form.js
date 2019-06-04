@@ -15,7 +15,13 @@ class Form extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        this.props.handleAddCity(this.state.inputValue);
+        if (this.state.inputValue) {
+            this.props.handleAddCity(this.state.inputValue);
+        } else {
+            console.log("Podaj nazwę miasta");
+            alert("Podaj nazwę miasta");
+        }
+
         this.setState({ inputValue: '' });
     }
 

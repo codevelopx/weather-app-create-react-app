@@ -16,7 +16,8 @@ class App extends Component {
     degFlag: false,
   }
 
-  tempAvg = []
+  tempAvg = [];
+  error = false;
 
   componentDidMount() {
     this.getLocalStorage();
@@ -26,17 +27,10 @@ class App extends Component {
 
     const { weather, cities } = this.state;
 
-    console.log(cities.length, weather.length);
-
-    console.log("deg", this.state.deg);
-
-    console.log("flaga degFlag: ", this.state.degFlag);
-
     if ((cities.length > weather.length) || this.state.degFlag) {
 
       Promise.all(this.state.cities.map(city =>
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city},PL&units=${this.state.deg}&APPID=96993feca341f53ea0847433eae53af5`)
-          // fetch(`https://api.openweathermap.org/data/2.5/forecast?id=${city}&units=metric&APPID=96993feca341f53ea0847433eae53af5`)
           .then(response => {
             if (response.ok) {
               console.log(response.ok);
@@ -57,8 +51,9 @@ class App extends Component {
           })
         })
         .catch((error) => {
-          console.log(error)
-          alert(error);
+          console.log(error);
+          return 0;
+          // alert(error);
         });
 
 
@@ -96,11 +91,20 @@ class App extends Component {
   handleAddCity = (city) => {
     console.log("Wywołanie handleAddCity");
     let cities = this.state.cities;
-    cities.push(city);
 
-    this.setState({
-      cities
-    })
+    let cityExist = cities.filter(item => item === city);
+    console.log(cityExist);
+
+    if (cityExist.length) {
+      console.log("Miasto znajduje się już na liście");
+      alert("Miasto znajduje się już na liście");
+    }
+    else {
+      cities.push(city);
+      this.setState({
+        cities
+      })
+    }
 
   }
 
