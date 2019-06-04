@@ -1,0 +1,43 @@
+.form {
+    margin: 15px 10%;
+    min-height: 30px;
+    text-align: center;
+}
+
+.form input{
+    height: 30px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.form input:first-child{    
+    width: 60%;
+    min-width: 100px;
+    margin-right: 5%;    
+    border: 1px solid #8181B3;
+    color: #8181B3;
+    background-color: rgb(250, 238, 232);
+    padding-left: 8px;
+}
+
+.form input:first-child:focus { 
+    background-color: rgb(250, 211, 191);
+    border: 1px solid blue;
+  }
+
+
+.form input:last-child{    
+    width: 25%;
+    min-width: 100px;
+    outline: none;
+    color: black;
+    letter-spacing: 2px;    
+    background-color: rgb(197, 161, 143);
+    border: 1px solid brown;
+}
+
+.form input:last-child:hover{
+    background-color: rgb(116, 78, 59);
+    color: white;
+}
+

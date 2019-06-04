@@ -1,0 +1,103 @@
+.cityList{
+    display: flex;
+    margin-bottom: 5px;
+    height: 40px;
+    border-radius: 20px;
+}
+
+.cityList div{
+    padding-left: 10px;
+    line-height: 40px;
+}
+
+.cityList div:nth-child(1){
+    flex-basis: 50px;
+}
+
+.cityList div:nth-child(2){
+    flex-basis: 200px;
+}
+
+.cityList div:nth-child(3){
+    flex-basis: 150px;
+}
+
+.cityList div:nth-child(4){
+    margin-left: 30%;
+    flex-basis: 120px;
+
+}
+.cityList div:last-child{
+    display: none;
+}
+
+.cityList button{  
+    padding: 5px 0;  
+    width: 25%;
+    min-width: 120px;
+    outline: none;
+    border: 1px solid red;
+    border-radius: 10px;
+    color: red;
+    letter-spacing: 2px;    
+    background-color: rgb(252, 193, 193);
+    transition: .3;
+    cursor: pointer;
+}
+
+.cityList button:hover{
+    background-color: rgb(243, 99, 99);
+    color: white;
+}
+
+.cityList:nth-child(even){
+    background-color: rgb(248, 215, 200);   
+}
+
+.cityList:nth-child(odd){
+    background-color: rgb(228, 173, 144);   
+}
+
+.cityLink a {
+    text-decoration: none;
+    color: rgb(79, 79, 226);
+    transition: .3s
+}
+.cityLink a:hover {
+    text-decoration: none;
+    color: rgb(35, 35, 185);
+    text-decoration: underline;
+}
+
+.cityListHeader{
+    display: flex;
+    margin-bottom: 5px;
+    height: 40px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: .8rem;
+    /* line-height: 40px; */
+}
+
+.cityListHeader div{
+    padding-left: 10px;
+    /* line-height: 40px; */
+}
+
+.cityListHeader div:nth-child(1){
+    flex-basis: 50px;
+}
+
+.cityListHeader div:nth-child(2){
+    flex-basis: 200px;
+}
+
+.cityListHeader div:nth-child(3){
+    flex-basis: 240px;
+}
+
+.cityListHeader div:nth-child(4){
+    margin-left: 40%;
+    flex-basis: 120px;
+
+}
