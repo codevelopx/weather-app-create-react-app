@@ -7,9 +7,9 @@ import { BrowserRouter } from "react-router-dom"
 
 ReactDOM.render(
 
-    <BrowserRouter>
+    <BrowserRouter basename='/weather-app-create-react-app'>
         <App />
-    </BrowserRouter>,
+    </BrowserRouter >,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

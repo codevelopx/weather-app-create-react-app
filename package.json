@@ -5,6 +5,8 @@
   "dependencies": {
     "enzyme": "^3.9.0",
     "enzyme-adapter-react-16": "^1.13.2",
+    "gh-pages": "^2.0.1",
+    "homepage": " https://codevelopx.github.io/weather-app-create-react-app/",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
@@ -12,6 +14,8 @@
     "react-test-renderer": "^16.8.6"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
