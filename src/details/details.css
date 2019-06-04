@@ -1,0 +1,45 @@
+.cityName {
+    font-size: 1.4rem;
+    padding: 10px;
+}
+
+.detailsContainer {
+    padding-top: 10px;
+    padding-left: 10px;
+    width: 95%;
+    margin: 0 auto;
+    border-top: 1px solid #aaa;
+    border-bottom: 1px solid #aaa;
+}
+
+.detailsContainer>div {
+    display: flex;
+    height: 40px;
+    
+}
+
+.detailsContainer>div>div{
+    flex-basis: 30%;
+}
+
+.back a {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    margin-right: 30px;
+    color: black;
+    text-decoration: none;
+    padding: 5px 15px;
+    letter-spacing: 2px;    
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: .3s;
+    background-color: rgb(197, 161, 143);
+    border: 1px solid brown;
+}
+
+.back a:hover{
+    background-color: rgb(116, 78, 59);
+    color: white;
+}
