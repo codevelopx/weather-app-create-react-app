@@ -10,13 +10,13 @@ class Details extends Component {
         let temp;
 
         if (this.props.weather) {
-            city = this.props.weather.filter(item => item.city.id == this.props.match.params.id);
-            temp = this.props.tempAvg.filter(item => item.id == this.props.match.params.id);
+            city = this.props.weather.filter(item => item.city.id === parseInt(this.props.match.params.id));
+            temp = this.props.tempAvg.filter(item => item.id === parseInt(this.props.match.params.id));
         }
 
         return (
             <div>
-                <div class="cityName">
+                <div className="cityName">
                     {city[0].city.name}
                 </div>
                 <div className="detailsContainer">
@@ -46,7 +46,7 @@ class Details extends Component {
                         </div>
                     </div>
                 </div>
-                <div class="back">
+                <div className="back">
                     <Link to="/">
                         Powrót
                     </Link>

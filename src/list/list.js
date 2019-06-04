@@ -5,7 +5,16 @@ import './list.css';
 
 class List extends Component {
 
-    // console.log("Propsy w List: ", props.weather);
+    tableHeader = () => {
+        return (
+            <div className="cityListHeader">
+                <div>#</div>
+                <div>Miasto</div>
+                <div>Średnia prognozowana temperatura</div>
+                <div></div>
+            </div>
+        )
+    }
 
     render() {
         let data = [];
@@ -15,8 +24,9 @@ class List extends Component {
 
         if (this.props.weather.length) {
             data = this.props.weather.map((item, index) => (
+
                 <div className="cityList" key={item.city.id}>
-                    <div>{index}</div>
+                    <div>{index + 1}</div>
                     <div className="cityLink">
                         <Link to={`/city/${item.city.id}`}>
                             {item.city.name}
@@ -38,12 +48,8 @@ class List extends Component {
         this.props.handleAvg(tempAvg);
         return (
             <>
-                <div className="cityListHeader">
-                    <div>#</div>
-                    <div>Miasto</div>
-                    <div>Średnia prognozowana temperatura</div>
-                    <div></div>
-                </div>
+                {this.props.weather.length ? this.tableHeader() : ''}
+                {/* {this.tableHeader()} */}
                 {data}
             </>
 

@@ -17,7 +17,6 @@ class App extends Component {
   }
 
   tempAvg = [];
-  error = false;
 
   componentDidMount() {
     this.getLocalStorage();
@@ -33,7 +32,6 @@ class App extends Component {
         fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city},PL&units=${this.state.deg}&APPID=96993feca341f53ea0847433eae53af5`)
           .then(response => {
             if (response.ok) {
-              console.log(response.ok);
               return response.json();
             }
             else
@@ -45,36 +43,27 @@ class App extends Component {
             weather,
             degFlag: false
           }, () => {
-            console.log("jestem w update")
             this.rewriteArrayCities();
             this.setLocalStorage();
           })
         })
         .catch((error) => {
           console.log(error);
-          return 0;
-          // alert(error);
         });
-
-
     }
   }
 
   handleAvg = (tempAvg) => {
-    console.log("Wywołanie handle AVG !!!")
     this.tempAvg = tempAvg;
-    console.log(this.tempAvg);
   }
 
   getLocalStorage = () => {
-    //pobieram nazwy miast z LocalStorage
+
     let savedCity = localStorage.getItem("storageCity");
     let cities;
 
-    //jeżeli są zapisane miasta, to pobieram dane z Api
     if (savedCity) {
       cities = JSON.parse(savedCity);
-      console.log(savedCity);
       this.setState({
         cities
       })
@@ -82,18 +71,15 @@ class App extends Component {
   }
 
   setLocalStorage = () => {
-    console.log("ZAPIS do local storage uruchamiany")
     if (this.state.cities.length)
       localStorage.setItem("storageCity", JSON.stringify(this.state.cities));
   };
 
 
   handleAddCity = (city) => {
-    console.log("Wywołanie handleAddCity");
-    let cities = this.state.cities;
 
+    let cities = this.state.cities;
     let cityExist = cities.filter(item => item === city);
-    console.log(cityExist);
 
     if (cityExist.length) {
       console.log("Miasto znajduje się już na liście");
@@ -105,17 +91,14 @@ class App extends Component {
         cities
       })
     }
-
   }
 
   rewriteArrayCities = () => {
-    console.log("rewriteArrayCities");
 
     let weather = this.state.weather;
     let newCityName;
     newCityName = weather.map(item => item.city.name);
 
-    console.log(newCityName);
     this.setState({
       cities: newCityName
     })
@@ -129,9 +112,7 @@ class App extends Component {
     let cityName;
     cityName = weather.filter(item => item.city.id === id);
     weather = weather.filter(item => item.city.id !== id);
-    console.log(cityName[0].city.name);
     cities = cities.filter(item => item !== cityName[0].city.name)
-    console.log(cities)
 
     this.setState({
       weather,
@@ -140,8 +121,6 @@ class App extends Component {
   }
 
   handleDeg = (deg) => {
-    console.log("handleDeg:", deg);
-
     if (deg === this.state.deg) {
       this.setState({
         degFlag: false
@@ -151,7 +130,6 @@ class App extends Component {
         degFlag: true
       })
     }
-
 
     if (deg === "metric") {
       this.setState({
@@ -166,7 +144,6 @@ class App extends Component {
     }
   }
 
-
   render() {
 
     return (
@@ -174,16 +151,12 @@ class App extends Component {
         <div className="settings">
           <Link to="/settings">Ustawienia</Link>
         </div>
-
-
-        <Route path="/settings/" component={(props) => <Settings handleDeg={this.handleDeg} deg={this.state.deg} changeDeg={this.state.changeDeg} />} />
-        <Route exact path="/" component={(props) => (<div className="list"><Form handleAddCity={this.handleAddCity} /> <List weather={this.state.weather} handleRemoveCity={this.handleRemoveCity} deg={this.state.deg} handleAvg={this.handleAvg} /></div>)} />
+        <Route path="/settings/" component={() => <Settings handleDeg={this.handleDeg} deg={this.state.deg} changeDeg={this.state.changeDeg} />} />
+        <Route exact path="/" component={() => (<div className="list"><Form handleAddCity={this.handleAddCity} /> <List weather={this.state.weather} handleRemoveCity={this.handleRemoveCity} deg={this.state.deg} handleAvg={this.handleAvg} /></div>)} />
         <Route path="/city/:id" component={(props) => <Details weather={this.state.weather} tempAvg={this.tempAvg} deg={this.state.deg} {...props} />} />
-
       </div>
     )
   }
-
 }
 
 export default App;
