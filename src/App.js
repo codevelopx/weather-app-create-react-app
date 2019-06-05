@@ -18,10 +18,12 @@ class App extends Component {
 
   tempAvg = [];
 
+  //pobranie zapisanych w storage miast, o ile istnieją
   componentDidMount() {
     this.getLocalStorage();
   }
 
+  //pobranie danych pogodowych przy kazdorazowym dodaniu miasta lub zmianie jednostki wyswietlania temperatury
   componentDidUpdate() {
 
     const { weather, cities } = this.state;
@@ -52,13 +54,13 @@ class App extends Component {
         });
     }
   }
-
+  // aby nie renderowac w nieskonczonosc (wywolywac componentDidUpdate()) zapis sredniej temp. do osobnej zmiennej
   handleAvg = (tempAvg) => {
     this.tempAvg = tempAvg;
   }
 
+  //pobranie miast z local storaage i zapisanie je do stanu
   getLocalStorage = () => {
-
     let savedCity = localStorage.getItem("storageCity");
     let cities;
 
@@ -69,15 +71,14 @@ class App extends Component {
       })
     }
   }
-
+  //zapis miast z listy do local storage
   setLocalStorage = () => {
     if (this.state.cities.length)
       localStorage.setItem("storageCity", JSON.stringify(this.state.cities));
   };
 
-
+  //obsluga nazwy  miasta otrzymanego z formularza. sprawdzenie czy miasto juz istnieje na liscie
   handleAddCity = (city) => {
-
     let cities = this.state.cities;
     let cityExist = cities.filter(item => item === city);
 
@@ -93,8 +94,8 @@ class App extends Component {
     }
   }
 
+  //zamiana nazw miast w state z wpisanych przez uzytkownika na te otrzymane z Api  
   rewriteArrayCities = () => {
-
     let weather = this.state.weather;
     let newCityName;
     newCityName = weather.map(item => item.city.name);
@@ -104,9 +105,8 @@ class App extends Component {
     })
 
   }
-
+  //usuniecie wskazanego miast z listy 
   handleRemoveCity = (id) => {
-
     let weather = this.state.weather;
     let cities = this.state.cities;
     let cityName;
@@ -119,7 +119,7 @@ class App extends Component {
       cities
     })
   }
-
+  //osbluga seetings - jednostki temperatury i sprawdzenie czy nastapila zmiana - ustawienie flagi w celu wywolania renderignu componentDidUpdate
   handleDeg = (deg) => {
     if (deg === this.state.deg) {
       this.setState({
