@@ -17,7 +17,7 @@ class Details extends Component {
             cityData = {
                 name: city.map(item => item.city.name),
                 lat: city.map(item => item.city.coord.lat),
-                lon: city.map(item => item.city.coord.lat),
+                lon: city.map(item => item.city.coord.lon),
                 temp: temp.map(item => item.temp)
             }
 
