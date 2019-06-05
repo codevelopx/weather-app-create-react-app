@@ -7,17 +7,26 @@ class Details extends Component {
 
     render() {
         let city;
+        let cityData = {};
         let temp;
 
         if (this.props.weather) {
             city = this.props.weather.filter(item => item.city.id === parseInt(this.props.match.params.id));
             temp = this.props.tempAvg.filter(item => item.id === parseInt(this.props.match.params.id));
+
+            cityData = {
+                name: city.map(item => item.city.name),
+                lat: city.map(item => item.city.coord.lat),
+                lon: city.map(item => item.city.coord.lat),
+                temp: temp.map(item => item.temp)
+            }
+
         }
 
         return (
             <div>
                 <div className="cityName">
-                    {city[0].city.name}
+                    {cityData.name}
                 </div>
                 <div className="detailsContainer">
                     <div>
@@ -25,7 +34,7 @@ class Details extends Component {
                             szerokość geograficzna:
                         </div>
                         <div>
-                            {city[0].city.coord.lat}
+                            {cityData.lat}
                         </div>
                     </div>
                     <div>
@@ -33,7 +42,7 @@ class Details extends Component {
                             długość geograficzna:
                         </div>
                         <div>
-                            {city[0].city.coord.lon}
+                            {cityData.lon}
                         </div>
                     </div>
                     <div>
@@ -41,7 +50,7 @@ class Details extends Component {
                             średnia temperatura
                         </div>
                         <div>
-                            {temp[0].temp}
+                            {cityData.lon}
                             {this.props.deg === 'metric' ? ' \u00B0C' : ' \u00B0F'}
                         </div>
                     </div>
