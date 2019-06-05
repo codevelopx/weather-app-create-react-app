@@ -39,27 +39,3 @@ class Form extends Component {
 
 export default Form
 
-
-
-/* const handleSubmit = (e) => {
-    e.preventDefault();
-}
-
-
-const Form = (props) => {
-
-    console.log(props);
-
-    return (
-        <div className="form" >
-            <form onSubmit={(e) => handleSubmit(e)}>
-                <input type="text" className="city" placeholder="Nazwa miasta..." onChange={(e) => props.handleAddCity(e.target.value)} />
-                <button className="addcity">Dodaj</button>
-            </form>
-        </div >
-    )
-}
-export default Form */
-
-
-// props.handleAddCity(e.target.value)

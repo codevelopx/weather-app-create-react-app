@@ -33,7 +33,6 @@ class List extends Component {
                         </Link>
                     </div>
                     {item.list.forEach(item => temps.push(item.main.temp))}
-                    {/* {console.log(temps)} */}
                     <div>
                         {temp = (temps.map((x, i, arr) => x / arr.length).reduce((a, b) => a + b)).toFixed(1)}
                         {tempAvg.push({ "id": item.city.id, "temp": temp })}

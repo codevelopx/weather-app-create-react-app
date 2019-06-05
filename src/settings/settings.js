@@ -15,9 +15,6 @@ class Settings extends Component {
             selectedOption: e.currentTarget.value
         });
         this.props.handleDeg(e.currentTarget.value)
-
-        console.log(this.props.deg, "===", e.currentTarget.value)
-
     }
 
     render() {
